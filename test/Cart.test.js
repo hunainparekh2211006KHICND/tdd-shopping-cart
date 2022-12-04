@@ -39,6 +39,6 @@ describe('Cart', () => {
         const itemQuantities = cart.itemQuantities();
         //Assert
         console.log(itemQuantities);
-        expect(itemQuantities).to.be.equal(expected);
+        expect(itemQuantities).to.deep.equal(expected);
     });
 });
