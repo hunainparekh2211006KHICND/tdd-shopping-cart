@@ -56,4 +56,19 @@ describe('Cart', () => {
         //Assert
         expect(cart.itemizedList()).to.deep.equal(expected);
     });
+
+    // Given I have an empty cart, when I add more than one of an item, then I expect `totalPrice` to reflect both the item price and quantity.
+    it('totalPrice reflect with price and quantity', ()=>{
+        //Arrange
+        const cart = new Cart();
+        const item1 = new Item('Book',200,false);
+        const item2 = new Item('Toy',100,false);
+        const item3 = new Item('Glass',500,true);
+        //Act
+        cart.addItem(item1,2);
+        cart.addItem(item2,3);
+        cart.addItem(item3,1);
+        //Assert
+        expect(cart.totalPrice).to.be.equal(1200);
+    });
 });
