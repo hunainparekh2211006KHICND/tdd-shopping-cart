@@ -14,5 +14,9 @@ module.exports = class Cart {
         });
         this.totalPrice += item.price * quantity;
     }
+
+    itemQuantities(){
+        return this.items.map(item=> `${item.itemName} - x${item.quantity}`);
+    }
 }
  
