@@ -5,7 +5,8 @@ module.exports = class Cart {
         this.totalPrice = 0;
     }
 
-    addItem(item,quantity){
+    addItem(item,quantity)
+    {
         this.items.push({
             itemName : item.name,
             price: item.price,
@@ -15,13 +16,19 @@ module.exports = class Cart {
         this.totalPrice += item.price * quantity;
     }
 
-    itemQuantities(){
+    itemQuantities()
+    {
         return this.items.map(item=> `${item.itemName} - x${item.quantity}`);
     }
 
     itemizedList()
     {
         return this.items.map(item=> `${item.itemName} - x${item.quantity} - $${item.price}.00`);
+    }
+
+    onSaleItems()
+    {
+        return this.items.filter(item=> item.onSale).map(item=> `${item.itemName} - x${item.quantity} - $${item.price}.00`);
     }
 }
  

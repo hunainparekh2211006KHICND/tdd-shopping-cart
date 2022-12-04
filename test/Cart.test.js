@@ -71,4 +71,21 @@ describe('Cart', () => {
         //Assert
         expect(cart.totalPrice).to.be.equal(1200);
     });
+
+    //Given I have a cart with items that are not on sale, when I add items that are on sale,
+    // I expect `onSaleItems()` to include only the items on sale.
+    it('should be return the saleItems list only including items on sale',()=>{
+        //Arrange
+        const cart = new Cart();
+        const item1 = new Item('Book',200,false);
+        const item2 = new Item('Toy',100,false);
+        const item3 = new Item('Glass',500,true);
+        const expected = ['Glass - x1 - $500.00'];
+        //Act
+        cart.addItem(item1,2);
+        cart.addItem(item2,3);
+        cart.addItem(item3,1);
+        //Assert
+        expect(cart.onSaleItems()).to.deep.equal(expected);
+    });
 });
